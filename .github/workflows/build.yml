@@ -3,7 +3,7 @@ name: Build Application
 on: [ push ]
 
 jobs:
-  build:
+  build-and-push-web:
     runs-on: ubuntu-latest
 
     steps:
@@ -26,7 +26,7 @@ jobs:
         env:
           CI: true
 
-      - name: Push build to OCI
+      - name: Push *.html files to OCI
         uses: oracle-actions/run-oci-cli-command@4425cc0533f324a03be7e728ccd4f4e63b1d4ad8
         env:
           OCI_CLI_USER: ${{ secrets.OCI_CLI_USER }}
@@ -35,5 +35,92 @@ jobs:
           OCI_CLI_KEY_CONTENT: ${{ secrets.OCI_CLI_KEY_CONTENT }}
           OCI_CLI_REGION: ${{ secrets.OCI_CLI_REGION }}
         with:
-          command: 'os object sync --bucket-name gourami --src-dir build'
-          silent: false
+          command: 'os object sync --bucket-name gourami --src-dir build --content-type text/html --include ''*.html'''
+
+      - name: Push *.json files to OCI
+        uses: oracle-actions/run-oci-cli-command@4425cc0533f324a03be7e728ccd4f4e63b1d4ad8
+        env:
+          OCI_CLI_USER: ${{ secrets.OCI_CLI_USER }}
+          OCI_CLI_TENANCY: ${{ secrets.OCI_CLI_TENANCY }}
+          OCI_CLI_FINGERPRINT: ${{ secrets.OCI_CLI_FINGERPRINT }}
+          OCI_CLI_KEY_CONTENT: ${{ secrets.OCI_CLI_KEY_CONTENT }}
+          OCI_CLI_REGION: ${{ secrets.OCI_CLI_REGION }}
+        with:
+          command: 'os object sync --bucket-name gourami --src-dir build --content-type application/json --include ''*.json'''
+
+      - name: Push *.map files to OCI
+        uses: oracle-actions/run-oci-cli-command@4425cc0533f324a03be7e728ccd4f4e63b1d4ad8
+        env:
+          OCI_CLI_USER: ${{ secrets.OCI_CLI_USER }}
+          OCI_CLI_TENANCY: ${{ secrets.OCI_CLI_TENANCY }}
+          OCI_CLI_FINGERPRINT: ${{ secrets.OCI_CLI_FINGERPRINT }}
+          OCI_CLI_KEY_CONTENT: ${{ secrets.OCI_CLI_KEY_CONTENT }}
+          OCI_CLI_REGION: ${{ secrets.OCI_CLI_REGION }}
+        with:
+          command: 'os object sync --bucket-name gourami --src-dir build --content-type application/json --include ''*.map'''
+
+      - name: Push *.ico files to OCI
+        uses: oracle-actions/run-oci-cli-command@4425cc0533f324a03be7e728ccd4f4e63b1d4ad8
+        env:
+          OCI_CLI_USER: ${{ secrets.OCI_CLI_USER }}
+          OCI_CLI_TENANCY: ${{ secrets.OCI_CLI_TENANCY }}
+          OCI_CLI_FINGERPRINT: ${{ secrets.OCI_CLI_FINGERPRINT }}
+          OCI_CLI_KEY_CONTENT: ${{ secrets.OCI_CLI_KEY_CONTENT }}
+          OCI_CLI_REGION: ${{ secrets.OCI_CLI_REGION }}
+        with:
+          command: 'os object sync --bucket-name gourami --src-dir build --content-type image/vnd.microsoft.icon --include ''*.ico'''
+
+      - name: Push *.png files to OCI
+        uses: oracle-actions/run-oci-cli-command@4425cc0533f324a03be7e728ccd4f4e63b1d4ad8
+        env:
+          OCI_CLI_USER: ${{ secrets.OCI_CLI_USER }}
+          OCI_CLI_TENANCY: ${{ secrets.OCI_CLI_TENANCY }}
+          OCI_CLI_FINGERPRINT: ${{ secrets.OCI_CLI_FINGERPRINT }}
+          OCI_CLI_KEY_CONTENT: ${{ secrets.OCI_CLI_KEY_CONTENT }}
+          OCI_CLI_REGION: ${{ secrets.OCI_CLI_REGION }}
+        with:
+          command: 'os object sync --bucket-name gourami --src-dir build --content-type image/png --include ''*.png'''
+
+      - name: Push *.txt files to OCI
+        uses: oracle-actions/run-oci-cli-command@4425cc0533f324a03be7e728ccd4f4e63b1d4ad8
+        env:
+          OCI_CLI_USER: ${{ secrets.OCI_CLI_USER }}
+          OCI_CLI_TENANCY: ${{ secrets.OCI_CLI_TENANCY }}
+          OCI_CLI_FINGERPRINT: ${{ secrets.OCI_CLI_FINGERPRINT }}
+          OCI_CLI_KEY_CONTENT: ${{ secrets.OCI_CLI_KEY_CONTENT }}
+          OCI_CLI_REGION: ${{ secrets.OCI_CLI_REGION }}
+        with:
+          command: 'os object sync --bucket-name gourami --src-dir build --content-type text/plain --include ''*.txt'''
+
+      - name: Push *.css files to OCI
+        uses: oracle-actions/run-oci-cli-command@4425cc0533f324a03be7e728ccd4f4e63b1d4ad8
+        env:
+          OCI_CLI_USER: ${{ secrets.OCI_CLI_USER }}
+          OCI_CLI_TENANCY: ${{ secrets.OCI_CLI_TENANCY }}
+          OCI_CLI_FINGERPRINT: ${{ secrets.OCI_CLI_FINGERPRINT }}
+          OCI_CLI_KEY_CONTENT: ${{ secrets.OCI_CLI_KEY_CONTENT }}
+          OCI_CLI_REGION: ${{ secrets.OCI_CLI_REGION }}
+        with:
+          command: 'os object sync --bucket-name gourami --src-dir build --content-type text/css --include ''*.css'''
+
+      - name: Push *.js files to OCI
+        uses: oracle-actions/run-oci-cli-command@4425cc0533f324a03be7e728ccd4f4e63b1d4ad8
+        env:
+          OCI_CLI_USER: ${{ secrets.OCI_CLI_USER }}
+          OCI_CLI_TENANCY: ${{ secrets.OCI_CLI_TENANCY }}
+          OCI_CLI_FINGERPRINT: ${{ secrets.OCI_CLI_FINGERPRINT }}
+          OCI_CLI_KEY_CONTENT: ${{ secrets.OCI_CLI_KEY_CONTENT }}
+          OCI_CLI_REGION: ${{ secrets.OCI_CLI_REGION }}
+        with:
+          command: 'os object sync --bucket-name gourami --src-dir build --content-type text/javascript --include ''*.js'''
+
+      - name: Push *.svg files to OCI
+        uses: oracle-actions/run-oci-cli-command@4425cc0533f324a03be7e728ccd4f4e63b1d4ad8
+        env:
+          OCI_CLI_USER: ${{ secrets.OCI_CLI_USER }}
+          OCI_CLI_TENANCY: ${{ secrets.OCI_CLI_TENANCY }}
+          OCI_CLI_FINGERPRINT: ${{ secrets.OCI_CLI_FINGERPRINT }}
+          OCI_CLI_KEY_CONTENT: ${{ secrets.OCI_CLI_KEY_CONTENT }}
+          OCI_CLI_REGION: ${{ secrets.OCI_CLI_REGION }}
+        with:
+          command: 'os object sync --bucket-name gourami --src-dir build --content-type image/svg+xml --include ''*.svg'''
