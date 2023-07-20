@@ -36,3 +36,4 @@ jobs:
           OCI_CLI_REGION: ${{ secrets.OCI_CLI_REGION }}
         with:
           command: 'os object sync --bucket-name gourami --src-dir build'
+          silent: false
