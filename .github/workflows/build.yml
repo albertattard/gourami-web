@@ -23,3 +23,16 @@ jobs:
 
       - name: Test the application
         run: npm test
+        env:
+          CI: true
+
+      - name: Push build to OCI
+        uses: oracle-actions/run-oci-cli-command@4425cc0533f324a03be7e728ccd4f4e63b1d4ad8
+        env:
+          OCI_CLI_USER: ${{ secrets.OCI_CLI_USER }}
+          OCI_CLI_TENANCY: ${{ secrets.OCI_CLI_TENANCY }}
+          OCI_CLI_FINGERPRINT: ${{ secrets.OCI_CLI_FINGERPRINT }}
+          OCI_CLI_KEY_CONTENT: ${{ secrets.OCI_CLI_KEY_CONTENT }}
+          OCI_CLI_REGION: ${{ secrets.OCI_CLI_REGION }}
+        with:
+          command: 'os object sync --bucket-name gourami --src-dir build'
