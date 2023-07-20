@@ -27,11 +27,9 @@
 
 ## Pending work
 
-1. Complete the OCI infrastructure
+1. Investigate how the `oci os object sync` can determine the file type
+   automatically.
 
-   The tenancy I am using has exhausted the Gateway quota and I am waiting for
-   either someone to delete any unused Gateways or for our quota to be adjusted.
-
-2. Create the Pipeline
-
-3. Deploy the application on OCI
+   I had to add a step for each file extension and provide the respective
+   `--content-type`. I am confident that there is a better way to deal with
+   this.
