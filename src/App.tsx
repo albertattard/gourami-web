@@ -1,14 +1,22 @@
 import React from 'react';
-import Health from './Health'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HealthComponent } from './components'
+import { NotFoundPage, RegisterPage } from './pages';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>Gourami - CI/CD template</p>
-        <Health />
-      </header>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<header className="App-header">
+            <p>Gourami - CI/CD template</p>
+            <HealthComponent />
+          </header>} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
