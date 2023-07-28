@@ -26,7 +26,5 @@ export const HealthComponent = () => {
     checkHealth();
   }, []);
 
-  return (<>
-    <p className={style}>Backend status {health.status}</p>
-  </>);
+  return (<p className={style}>Backend status {health.status}</p>);
 }

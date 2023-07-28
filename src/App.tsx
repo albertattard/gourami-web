@@ -1,24 +1,26 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { HealthComponent } from './components'
-import { NotFoundPage, RegisterPage } from './pages';
+import { HashRouter, Routes, Route } from 'react-router-dom';
+import { HealthComponent, NavigationBarComponent } from './components'
+import { ContactUsPage, NotFoundPage, PrivacyPolicyPage, RegisterPage, TermsAndConditionsPage } from './pages';
 import './App.css';
 
-function App() {
+export const App = () => {
   return (
-    <div className="App">
-      <BrowserRouter>
+    <div className='App'>
+      <HashRouter>
         <Routes>
-          <Route path="/" element={<header className="App-header">
+          <Route path='/' element={<header>
             <p>Gourami - CI/CD template</p>
             <HealthComponent />
           </header>} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="*" element={<NotFoundPage />} />
+          <Route path='/registration' element={<RegisterPage />} />
+          <Route path='/contact-us' element={<ContactUsPage />} />
+          <Route path='/terms-and-conditions' element={<TermsAndConditionsPage />} />
+          <Route path='/privacy-policy' element={<PrivacyPolicyPage />} />
+          <Route path='*' element={<NotFoundPage />} />
         </Routes>
-      </BrowserRouter>
+        <NavigationBarComponent />
+      </HashRouter>
     </div>
   );
 }
-
-export default App;
