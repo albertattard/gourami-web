@@ -2,12 +2,17 @@
 
 set -e
 
-oci os object sync --bucket-name gourami --src-dir build --content-type text/html                --include '*.html'
-oci os object sync --bucket-name gourami --src-dir build --content-type application/json         --include '*.json'
-oci os object sync --bucket-name gourami --src-dir build --content-type application/json         --include '*.map'
-oci os object sync --bucket-name gourami --src-dir build --content-type image/vnd.microsoft.icon --include '*.ico'
-oci os object sync --bucket-name gourami --src-dir build --content-type image/png                --include '*.png'
-oci os object sync --bucket-name gourami --src-dir build --content-type text/plain               --include '*.txt'
-oci os object sync --bucket-name gourami --src-dir build --content-type text/css                 --include '*.css'
-oci os object sync --bucket-name gourami --src-dir build --content-type text/javascript          --include '*.js'
-oci os object sync --bucket-name gourami --src-dir build --content-type image/svg+xml            --include '*.svg'
+export CI=true
+npm ci
+npm run build --if-present
+npm test
+
+oci os object sync --bucket-name 'gourami' --src-dir 'build' --content-type 'text/html'                --include '*.html'
+oci os object sync --bucket-name 'gourami' --src-dir 'build' --content-type 'application/json'         --include '*.json'
+oci os object sync --bucket-name 'gourami' --src-dir 'build' --content-type 'application/json'         --include '*.map'
+oci os object sync --bucket-name 'gourami' --src-dir 'build' --content-type 'image/vnd.microsoft.icon' --include '*.ico'
+oci os object sync --bucket-name 'gourami' --src-dir 'build' --content-type 'image/png'                --include '*.png'
+oci os object sync --bucket-name 'gourami' --src-dir 'build' --content-type 'text/plain'               --include '*.txt'
+oci os object sync --bucket-name 'gourami' --src-dir 'build' --content-type 'text/css'                 --include '*.css'
+oci os object sync --bucket-name 'gourami' --src-dir 'build' --content-type 'text/javascript'          --include '*.js'
+oci os object sync --bucket-name 'gourami' --src-dir 'build' --content-type 'image/svg+xml'            --include '*.svg'
