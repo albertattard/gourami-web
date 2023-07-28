@@ -18,6 +18,14 @@ li {
     float: left;
 }
 
+li:last-child {
+    float: right;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    padding-right: 14px;
+}
+
 li a {
     display: block;
     color: white;
