@@ -1,3 +1,11 @@
-.health-status {
+.checking {
+    color: gray;
+}
+
+.up {
     color: green;
+}
+
+.unreachable {
+    color: red;
 }
