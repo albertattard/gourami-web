@@ -25,6 +25,17 @@
   $ npm run build
   ```
 
+- Build the docker image
+
+  ```shell
+  $ docker build \
+    --file=container/Dockerfile \
+    --tag gourami-web:local \
+    --load \
+    .
+  ```
+
+
 ## Pending work
 
 1. Investigate how the `oci os object sync` can determine the file type

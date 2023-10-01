@@ -11,7 +11,7 @@ export const HealthComponent = () => {
 
   useEffect(() => {
     const checkHealth = async () => {
-      fetch('/api/actuator/health')
+      fetch('/api/public/actuator/health')
         .then(response => response.json())
         .then(data => {
           setHealth(data);

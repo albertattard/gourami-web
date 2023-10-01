@@ -10,13 +10,12 @@ export const RegisterPage = () => {
         const payload = {
             method: 'POST',
             headers: {
-                Accept: 'application/form-data',
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({ name, surname, email }),
         };
 
-        fetch('/api/register', payload)
+        fetch('/api/registration', payload)
             .then((resp) => resp.json())
             .then((data) => console.log(data))
             .catch(e => { console.log(e) });
