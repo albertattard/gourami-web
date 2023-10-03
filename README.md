@@ -3,6 +3,7 @@
 **References**
 
 - [How to Host Static Website in the OCI Object Storage](https://medium.com/oracledevs/how-to-serve-website-static-files-from-the-oci-object-storage-bd79ca0805c7)
+- [The Complete Guide to React User Authentication with Auth0](https://auth0.com/blog/complete-guide-to-react-user-authentication/)
 
 ## Prerequisites
 
@@ -34,7 +35,6 @@
     --load \
     .
   ```
-
 
 ## Pending work
 
